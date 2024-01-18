@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "185379516250",
+    "project_id": "abc-b0b7f",
+    "storage_bucket": "abc-b0b7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185379516250:android:aeb806017d2c1a6c164d63",
+        "android_client_info": {
+          "package_name": "com.example.abc_banking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP2YZEG7RZPQ4OAaW92E1ABsiEQDwtc2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
