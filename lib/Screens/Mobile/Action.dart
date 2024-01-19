@@ -39,7 +39,7 @@ class _ActionScreenState extends State<ActionScreen> {
       .currAccount;
 
   String? selectedFriend;
-  String? selectedPaymentMethod;
+  String? selectedSource;
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +143,9 @@ class _ActionScreenState extends State<ActionScreen> {
                                   )
                               ),
                           ),
+                          onChanged: (val){
+                            setState(() {});
+                          },
 
                         ),
                       ),
@@ -163,7 +166,15 @@ class _ActionScreenState extends State<ActionScreen> {
                       Text ("Payment source", style: Styling
                         .normalTextDark,),
                       const SizedBox(height: 10,),
-                      PaymentMethods()
+                      PaymentMethods(
+                        selectedSource: selectedSource,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            print(newValue);
+                            selectedSource = newValue!;
+                          });
+                        },
+                      ),
                     ],
                   ),
                 ): const Offstage(),
@@ -178,6 +189,7 @@ class _ActionScreenState extends State<ActionScreen> {
                       .normalTextDark,),
                   const SizedBox(height: 10,),
                   Friends(
+                    key: const ValueKey('friends'),
                     selectedValue: selectedFriend,
                     onChanged: (String? newValue) {
                       setState(() {
@@ -264,6 +276,8 @@ class _ActionScreenState extends State<ActionScreen> {
         timestamp: DateTime.now().toString(),
         amount: amountController.numberValue,
         status: "",
+        transactionDetails: selectedSource != null?"deposit made from "
+            "$selectedSource":"",
         description: payRefController.text?? "deposit");
     var successfulDeposit = await TransactionService().deposit(
         newTransaction,

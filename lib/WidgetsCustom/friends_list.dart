@@ -39,10 +39,19 @@ class _FriendsState extends State<Friends> {
   }
   String? selectedValue = null;
 
+  late Future<QuerySnapshot<Object?>>fetchFriends;
+
+  @override
+  void initState() {
+    fetchFriends = CustomerService().fetchUsers();
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<QuerySnapshot>(
-        future: CustomerService().fetchUsers(),
+        future: fetchFriends,
         builder: (context,
             AsyncSnapshot  snapshot) {
           var data = snapshot.data;

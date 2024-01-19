@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PaymentMethods extends StatefulWidget {
-  const PaymentMethods({Key? key}) : super(key: key);
+  String? selectedSource;
+  ValueChanged<String?>? onChanged;
+  PaymentMethods({Key? key, this.onChanged, this.selectedSource}) : super(key: key);
 
   @override
   State<PaymentMethods> createState() => _PaymentMethodsState();
@@ -63,12 +65,8 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                 )
             ),
         ),
-        value: selectedValue,
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedValue = newValue!;
-          });
-        },
+        value: widget.selectedSource,
+        onChanged: widget.onChanged,
         items: dropdownItems);
   }
 }
