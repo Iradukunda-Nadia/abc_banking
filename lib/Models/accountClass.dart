@@ -76,7 +76,7 @@ class ABCTransaction {
     id: json["id"],
     transactionType: json["transactionType"]?? '',
     timestamp: json["timestamp"] ?? '',
-    amount: json["amount"],
+    amount: double.parse(json["amount"].toString()),
     status: json["status"],
     transactionDetails: json["transactionDetails"]?? "",
     sendTo: json["sendTo"]?? {},
